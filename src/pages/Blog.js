@@ -8,7 +8,9 @@ import { getBlogs } from "../store/action/Blog";
 
 const Blog = () => {
     const dispatch = useDispatch();
-
+    // const showMore = () => {
+    //     dispatch(addCounter());
+    // };
     useEffect(() => {
         dispatch(getBlogs());
     }, []);
@@ -18,7 +20,11 @@ const Blog = () => {
     return (
         <div className="blog-post-wrapper">
             {
-                posts?.map((item,idx) => {
+                posts
+                .filter((item) => {
+                    return item.id <= 15;
+                })
+                .map((item,idx) => {
                     return(
                         <div className="blog_item" key={idx}>
                             <Link to={`/post/${item.id}`}>{item.title}</Link>
@@ -26,7 +32,7 @@ const Blog = () => {
                         </div>
                     );
                 })};
-            
+            {/* <button onClick={showMore}>More</button> */}
         </div>
     )
 }

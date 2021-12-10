@@ -1,10 +1,13 @@
-import{ GET_BLOGS} from "../action/Blog";
+import{ GET_BLOGS } from "../action/Blog";
 
-import{ GET_BLOG} from "../action/Blog";
+import{ GET_BLOG } from "../action/Blog";
+
+import{ GET_COMMENT } from "../action/Blog";
 
 const initialState = {
   posts: [],
   single: {},
+  comment: [],
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -28,6 +31,16 @@ const blogReducer = (state = initialState, action) => {
         ...state,
 
         single: action.payload,
+        
+      };
+
+      case GET_COMMENT:
+
+      return{
+
+        ...state,
+
+        comment: action.payload,
         
       };
 
